@@ -42,6 +42,7 @@ percent_mtcars \%>\%
 }
 \seealso{
 Other percentile samplers: \code{\link{percentify_cut}},
-  \code{\link{percentify_max}}, \code{\link{percentify}}
+  \code{\link{percentify_max}},
+  \code{\link{percentify_random}}, \code{\link{percentify}}
 }
 \concept{percentile samplers}

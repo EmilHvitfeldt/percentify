@@ -9,7 +9,7 @@ test_that("calculations are done correctly", {
   df_percented <- percentify_max(df, var1, q)
 
   expect_equal(
-    (1-q) * 100,
+    (1 - q) * 100,
     group_size(df_percented)
   )
 
@@ -29,7 +29,7 @@ test_that("upper argument works as intended", {
   df_percented <- percentify_max(df, var1, q, upper)
 
   expect_equal(
-    (upper-q) * 100,
+    (upper - q) * 100,
     group_size(df_percented)
   )
 

@@ -29,7 +29,7 @@ test_that("lower argument works as intended", {
   df_percented <- percentify_min(df, var1, q, lower)
 
   expect_equal(
-    (q-lower) * 100,
+    (q - lower) * 100,
     group_size(df_percented)
   )
 

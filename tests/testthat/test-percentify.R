@@ -41,7 +41,7 @@ test_that("calculations are done correctly", {
   df_percented <- percentify(df, var1, lower, upper)
 
   expect_equal(
-    (upper-lower) * 100,
+    (upper - lower) * 100,
     group_size(df_percented)
   )
 

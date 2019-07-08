@@ -45,6 +45,7 @@ percentify_cut(mtcars, mpg, cut_evenly(8))
 \link{cut_evenly}
 
 Other percentile samplers: \code{\link{percentify_max}},
-  \code{\link{percentify_min}}, \code{\link{percentify}}
+  \code{\link{percentify_min}},
+  \code{\link{percentify_random}}, \code{\link{percentify}}
 }
 \concept{percentile samplers}

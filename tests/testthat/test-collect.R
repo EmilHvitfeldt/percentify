@@ -1,7 +1,7 @@
 library(dplyr)
 test_that("can collect()", {
 
-  x <- percentify(mtcars, mpg, 0, 1,)
+  x <- percentify(mtcars, mpg, 0, 1)
 
   expect_error(
     x_c <- collect(x),
