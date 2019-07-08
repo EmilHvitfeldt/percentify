@@ -41,13 +41,14 @@ percentify.tbl_df <- function(data, var, lower, upper, key = ".percentile") {
   cutoffs_lower <- quantile(data[[var_text]], lower)
   cutoffs_upper <- quantile(data[[var_text]], upper)
 
-  name <- paste(".percentile", var_text, sep = "_")
+  name <- paste(key, var_text, sep = "_")
 
   new_grouped_df(
     data,
     groups = tibble(
       !!name := breaks_full,
       ".rows" := map2(cutoffs_lower, cutoffs_upper,
-                      ~ which(data[[var_text]] >= .x & data[[var_text]] <= .y)))
+                      ~ which(data[[var_text]] >= .x & data[[var_text]] <= .y))),
+    class = "percentiled_df"
   )
 }

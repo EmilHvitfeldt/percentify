@@ -1,4 +1,4 @@
 library(testthat)
-library(percentilesplit)
+library(percentify)
 
-test_check("percentilesplit")
+test_check("percentify")

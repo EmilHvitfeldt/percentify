@@ -1,35 +1,22 @@
 library(dplyr)
 
-test_that("can create bootstrapped data frames", {
+df <- data.frame(var1 = 1:100,
+                 var2 = 1:100)
 
-  expect_error(
-    x <- percentify_cut(mtcars, mpg, 0.5),
-    NA
-  )
+test_that("calculations are done correctly", {
+  q <- c(0.2, 0.6, 0.78, 0.9)
 
-  expect_is(x, "percentiled_df")
-  expect_is(x, "grouped_df")
-
-  x_gd <- group_data(x)
+  df_percented <- percentify_cut(df, var1, q)
 
   expect_equal(
-    colnames(x_gd),
-    c(".percentile_mpg", ".rows")
+    (c(q, 1) - c(0, q)) * 100,
+    group_size(df_percented)
   )
 
   expect_equal(
-    x_gd[[".percentile_mpg"]],
-    c("0%-50%", "50%-100%")
+    (c(q, 1) * 100 + c(0, q) * 100 + 1) / 2,
+    df_percented %>%
+      summarise(avg = mean(var2)) %>%
+      pull(avg)
   )
-
-  expect_equal(
-    nrow(x_gd),
-    2
-  )
-
-  expect_equal(
-    unique(vapply(x_gd$.rows, length, integer(1))),
-    c(17, 15)
-  )
-
 })
