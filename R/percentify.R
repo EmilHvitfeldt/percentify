@@ -1,20 +1,31 @@
-#' Title
+#' Group a data.frame by percentile ranges in variable
 #'
-#' @param data data.frame or tibble
-#' @param var a variable
-#' @param lower numeric
-#' @param upper numeric
+#' `percentify()` is the main function in percentify. It takes a data.frame or
+#'  tibble, and creates groups based on the quantiles lower and upper bounds
+#'  specified. This become handy once you start working with multiple
+#'  overlapping bounds.
+#'
+#' @param data A data.frame or tibble,
+#' @param var Variable to do grouping by as string or symbol.
+#' @param lower Numerical values for lower bound of ranges. Must be between 0
+#'     and 1. Length of lower and upper must be equal.
+#' @param upper Numerical values for upper bound of ranges. Must be between 0
+#'     and 1. Length of lower and upper must be equal.
 #' @param key A single character specifying the name of the virtual group
 #' that is added. Defaults to ".percentile".
 #'
-#'
-#' @return percentile grouped tibble
+#' @return percentile grouped [tibble][tibble::tibble-package]
 #' @export
+#'
+#' @family percentile samplers
 #'
 #' @examples
 #' library(dplyr)
 #' library(broom)
-#' percent_mtcars <- percentify_max(mtcars, mpg, c(0, 0.25, 0.5, 0.75))
+#' percent_mtcars <- percentify(mtcars, mpg,
+#'                              lower = c(0.2, 0.4),
+#'                              upper = c(0.6, 0.8)
+#'                              )
 #'
 #' percent_mtcars
 #'

@@ -2,31 +2,46 @@
 % Please edit documentation in R/percentify_max.R
 \name{percentify_max}
 \alias{percentify_max}
-\title{Title}
+\title{Group a data.frame by percentile ranges in variable with constant upper bound}
 \usage{
-percentify_max(tbl, var, q = numeric(), upper = 1)
+percentify_max(data, var, q = numeric(), upper = 1)
 }
 \arguments{
-\item{tbl}{data.frame or tibble}
+\item{data}{A data.frame or tibble,}
 
-\item{var}{a variable}
+\item{var}{Variable to do grouping by as string or symbol.}
 
-\item{q}{q}
+\item{q}{Numerical values for lower bound of ranges. Must be between 0
+and 1.}
 
-\item{upper}{numeric}
+\item{upper}{Numerical values for upper bound of ranges. Must be between 0
+and 1. Length of lower and upper must be equal.}
 }
 \value{
 percentile grouped tibble
 }
 \description{
-Title
+This function is a small wrapper around \code{\link{percentify}}, where the
+upper bound is a fixed value.
 }
 \examples{
 library(dplyr)
-cut_mtcars <- percentify_max(mtcars, mpg, c(0.25, 0.75))
-summarize(cut_mtcars,
+library(broom)
+percent_mtcars <- percentify_max(mtcars, mpg, c(0, 0.25, 0.5, 0.75))
+
+percent_mtcars
+
+summarize(percent_mtcars,
           mean_hp = mean(hp),
           mean_wt = mean(wt),
           n_obs = n()
           )
+
+percent_mtcars \%>\%
+  group_modify(~tidy(lm(disp ~ wt + cyl, data = .x)))
 }
+\seealso{
+Other percentile samplers: \code{\link{percentify_cut}},
+  \code{\link{percentify_min}}, \code{\link{percentify}}
+}
+\concept{percentile samplers}

@@ -1,12 +1,16 @@
-#' Title
+#' Group a data.frame by percentile ranges in variable with constant upper bound
 #'
-#' @param tbl data.frame or tibble
-#' @param var a variable
-#' @param q q
-#' @param lower numeric
+#' This function is a small wrapper around \code{\link{percentify}}, where the
+#' upper bound is a fixed value.
+#'
+#' @inheritParams percentify
+#' @param q Numerical values for upper bound of ranges. Must be between 0
+#'   and 1.
 #'
 #' @return percentile grouped tibble
 #' @export
+#'
+#' @family percentile samplers
 #'
 #' @examples
 #' library(dplyr)
@@ -23,6 +27,6 @@
 #'
 #' percent_mtcars %>%
 #'   group_modify(~tidy(lm(disp ~ wt + cyl, data = .x)))
-percentify_min <- function(tbl, var, q = numeric(), lower = 0) {
-  percentify(tbl, {{var}}, lower = rep(lower, length(q)), upper = q)
+percentify_min <- function(data, var, q = numeric(), lower = 0) {
+  percentify(data, {{var}}, lower = rep(lower, length(q)), upper = q)
 }

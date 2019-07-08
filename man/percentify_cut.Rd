@@ -2,22 +2,25 @@
 % Please edit documentation in R/percentile_cut.R
 \name{percentify_cut}
 \alias{percentify_cut}
-\title{Title}
+\title{Group a data.frame by percentile ranges in variable by cutting points}
 \usage{
-percentify_cut(tbl, var, q = numeric())
+percentify_cut(data, var, q = numeric())
 }
 \arguments{
-\item{tbl}{data.frame or tibble}
+\item{data}{A data.frame or tibble,}
 
-\item{var}{a variable}
+\item{var}{Variable to do grouping by as string or symbol.}
 
-\item{q}{q}
+\item{q}{Numerical values for cutting points. Must be between 0
+and 1.}
 }
 \value{
 percentile grouped tibble
 }
 \description{
-Title
+This function is a small wrapper around \code{\link{percentify}}. This
+function takes a vector of points and creates ranges between those points,
+resulting in non-overlapping groups.
 }
 \examples{
 library(dplyr)
@@ -38,3 +41,10 @@ percent_mtcars \%>\%
 # cut_evenly() can be used to create cuts
 percentify_cut(mtcars, mpg, cut_evenly(8))
 }
+\seealso{
+\link{cut_evenly}
+
+Other percentile samplers: \code{\link{percentify_max}},
+  \code{\link{percentify_min}}, \code{\link{percentify}}
+}
+\concept{percentile samplers}

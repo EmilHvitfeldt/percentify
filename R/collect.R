@@ -1,17 +1,17 @@
 #' Force virtual groups to become explicit rows
 #'
-#' When `collect()` is used on a `percented_df`, the virtual bootstrap groups
+#' When `collect()` is used on a `percentiled_df`, the virtual groups
 #' are made explicit.
 #'
-#' @param x A `percented_df`.
+#' @param x A `percentiled_df`.
 #'
 #' @param ... Not used.
 #'
 #' @param id Optional. A single character that specifies a name for a column
-#' containing a sequence from `1:n` for each bootstrap group.
+#' containing a sequence from `1:n` for each group.
 #'
 #' @param original_id Optional. A single character that specifies a name for
-#' a column containing the original position of the bootstrapped row.
+#' a column containing the original position of the row.
 #'
 #' @examples
 #' library(dplyr)

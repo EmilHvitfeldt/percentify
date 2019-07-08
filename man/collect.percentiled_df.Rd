@@ -7,18 +7,18 @@
 collect.percentiled_df(x, ..., id = NULL, original_id = NULL)
 }
 \arguments{
-\item{x}{A \code{percented_df}.}
+\item{x}{A \code{percentiled_df}.}
 
 \item{...}{Not used.}
 
 \item{id}{Optional. A single character that specifies a name for a column
-containing a sequence from \code{1:n} for each bootstrap group.}
+containing a sequence from \code{1:n} for each group.}
 
 \item{original_id}{Optional. A single character that specifies a name for
-a column containing the original position of the bootstrapped row.}
+a column containing the original position of the row.}
 }
 \description{
-When \code{collect()} is used on a \code{percented_df}, the virtual bootstrap groups
+When \code{collect()} is used on a \code{percentiled_df}, the virtual groups
 are made explicit.
 }
 \examples{

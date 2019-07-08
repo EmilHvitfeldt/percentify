@@ -10,10 +10,11 @@ cut_evenly(n)
 \item{n}{number of points}
 }
 \value{
-numeric vector
+numeric vector of length n-1.
 }
 \description{
-Evenly devide the range 0 to 1 into n pieces
+This function work very well in combination with \code{\link{percentify_cut}}
+to create evenly spaced intervals.
 }
 \examples{
 cut_evenly(3)
@@ -26,4 +27,7 @@ library(dplyr)
 # cuts easily.
 percentify_cut(mtcars, mpg, cut_evenly(4)) \%>\%
   summarise(mean(wt))
+}
+\seealso{
+\link{percentify_cut}
 }

@@ -1,9 +1,14 @@
 #' Evenly devide the range 0 to 1 into n pieces
 #'
+#' This function work very well in combination with \code{\link{percentify_cut}}
+#' to create evenly spaced intervals.
+#'
 #' @param n number of points
 #'
-#' @return numeric vector
+#' @return numeric vector of length n-1.
 #' @export
+#'
+#' @seealso [percentify_cut]
 #'
 #' @examples
 #' cut_evenly(3)

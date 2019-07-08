@@ -1,11 +1,19 @@
-#' Title
+#' Group a data.frame by percentile ranges in variable by cutting points
 #'
-#' @param tbl data.frame or tibble
-#' @param var a variable
-#' @param q q
+#' This function is a small wrapper around \code{\link{percentify}}. This
+#' function takes a vector of points and creates ranges between those points,
+#' resulting in non-overlapping groups.
+#'
+#' @inheritParams percentify
+#' @param q Numerical values for cutting points. Must be between 0
+#'   and 1.
 #'
 #' @return percentile grouped tibble
 #' @export
+#'
+#' @family percentile samplers
+#'
+#' @seealso [cut_evenly]
 #'
 #' @examples
 #' library(dplyr)
@@ -30,6 +38,6 @@
 #' @importFrom stats quantile
 #' @importFrom dplyr new_grouped_df
 #' @importFrom tidyr nest
-percentify_cut <- function(tbl, var, q = numeric()) {
-  percentify(tbl, {{var}}, lower = c(0, q), upper = c(q, 1))
+percentify_cut <- function(data, var, q = numeric()) {
+  percentify(data, {{var}}, lower = c(0, q), upper = c(q, 1))
 }
