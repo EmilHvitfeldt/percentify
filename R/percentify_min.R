@@ -33,5 +33,8 @@
 #' library(ggplot2)
 #' autoplot(percent_mtcars)
 percentify_min <- function(data, var, q = numeric(), lower = 0) {
+  if (any(q > 1)) {
+    stop("All values of `q` much be lesser than 1.")
+  }
   percentify(data, {{var}}, lower = rep(lower, length(q)), upper = q)
 }

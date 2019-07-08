@@ -24,3 +24,11 @@ test_that("upper n works as intended", {
                  n[i])
   }
 })
+
+test_that("arguments are being guarded", {
+  expect_error(percentify_random(df, var1, -0.2, 10), "width")
+
+  expect_error(percentify_random(df, var1, 1.2, 10), "width")
+
+  expect_error(percentify_random(df, var1, 0.2, 0), "n")
+})

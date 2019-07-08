@@ -35,6 +35,19 @@
 #' library(ggplot2)
 #' autoplot(percent_mtcars)
 percentify_random <- function(data, var, width, n = 10) {
+  if (any(width > 1) || any(width < 0)) {
+    stop("width must be in the interval (0, 1).")
+  }
+  if (length(n) !=  1) {
+    stop("`n` must be a single number.")
+  }
+  if (as.integer(n) != n) {
+    stop("`n` must be an integer value.")
+  }
+  if (n < 1) {
+    stop("`n` must be 1 or more.")
+  }
+
   lower <- stats::runif(n, 0, 1 - width)
   percentify(data, {{var}},
              lower = lower,

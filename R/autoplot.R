@@ -3,8 +3,6 @@
 #' functions.
 #' @export
 autoplot.percentiled_df <- function(object) {
-  `%+%` <- ggplot2::`%+%`
-
   ranges <- dplyr::group_data(object)[[1]]
   ranges_string <- strsplit(gsub("%", "", ranges), "-")
 

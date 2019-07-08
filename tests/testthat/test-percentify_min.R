@@ -40,3 +40,11 @@ test_that("lower argument works as intended", {
       pull(avg)
   )
 })
+
+test_that("arguments are being guarded", {
+  expect_error(percentify_min(df, var1, 1, -1), "lower")
+
+  expect_error(percentify_min(df, var1, 2, 0), "q")
+
+  expect_error(percentify_min(df, var1, 0.3, 0.5))
+})

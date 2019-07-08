@@ -47,6 +47,19 @@
 #' @importFrom dplyr new_grouped_df
 #' @importFrom tidyr nest
 percentify <- function(data, var, lower = 0, upper = 1, key = ".percentile") {
+  if (any(lower < 0)) {
+    stop("All values of `lower` much be greater than 0.")
+  }
+  if (any(upper > 1)) {
+    stop("All values of `upper` much be lesser than 1.")
+  }
+  if (length(lower) != length(upper)) {
+    stop("`lower` and `upper` must be the same length.")
+  }
+  if (any(lower > upper)) {
+    stop("`lower` must be smaller then `upper`.")
+  }
+
   UseMethod("percentify")
 }
 

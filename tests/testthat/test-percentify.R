@@ -1,5 +1,8 @@
 library(dplyr)
 
+df <- data.frame(var1 = 1:100,
+                 var2 = 1:100)
+
 test_that("can create grouped data frames", {
 
   expect_error(
@@ -33,8 +36,6 @@ test_that("can create grouped data frames", {
 })
 
 test_that("calculations are done correctly", {
-  df <- data.frame(var1 = 1:100,
-                   var2 = 1:100)
   lower <- c(0.0, 0.1, 0.2, 0.5, 0.8)
   upper <- c(0.6, 0.9, 0.8, 0.6, 0.95)
 
@@ -51,4 +52,14 @@ test_that("calculations are done correctly", {
       summarise(avg = mean(var2)) %>%
       pull(avg)
   )
+})
+
+test_that("arguments are being guarded", {
+  expect_error(percentify(df, var1, -1, 1), "lower")
+
+  expect_error(percentify(df, var1, 0, 2), "upper")
+
+  expect_error(percentify(df, var1, c(0.1, 0.2), 1))
+
+  expect_error(percentify(df, var1, 0.5, 0.3))
 })

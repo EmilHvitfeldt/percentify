@@ -33,5 +33,9 @@
 #' library(ggplot2)
 #' autoplot(percent_mtcars)
 percentify_max <- function(data, var, q = numeric(), upper = 1) {
+  if (any(q < 0)) {
+    stop("All values of `q` much be greater than 0.")
+  }
+
   percentify(data, {{var}}, lower = q, upper = rep(upper, length(q)))
 }

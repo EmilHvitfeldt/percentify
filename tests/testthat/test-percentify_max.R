@@ -40,3 +40,11 @@ test_that("upper argument works as intended", {
       pull(avg)
   )
 })
+
+test_that("arguments are being guarded", {
+  expect_error(percentify_max(df, var1, -0.1, 1), "q")
+
+  expect_error(percentify_max(df, var1, 0, 2), "upper")
+
+  expect_error(percentify_max(df, var1, 0.5, 0.3))
+})
