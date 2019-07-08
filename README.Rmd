@@ -17,6 +17,8 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![CRAN status](https://www.r-pkg.org/badges/version/percentify)](https://cran.r-project.org/package=percentify)
+[![Travis build status](https://travis-ci.org/EmilHvitfeldt/percentify.svg?branch=master)](https://travis-ci.org/EmilHvitfeldt/percentify)
+[![Codecov test coverage](https://codecov.io/gh/EmilHvitfeldt/percentify/branch/master/graph/badge.svg)](https://codecov.io/gh/EmilHvitfeldt/percentify?branch=master)
 <!-- badges: end -->
 
 The goal of percentify is to create virtual groups on top of a `tibble` or `grouped_df` to allow calculation within percentile ranges of a variable on the whole dataset.  You can then efficiently perform various dplyr operations on this resampled_df, like: `summarise()`, `do()` and `group_map()`.
