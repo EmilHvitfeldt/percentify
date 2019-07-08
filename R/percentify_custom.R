@@ -34,7 +34,6 @@ percentify_custom <- function(tbl, var, lower = 0, upper = 1) {
     groups = tibble(
       !!name := breaks_full,
       ".rows" := map2(cutoffs_lower, cutoffs_upper,
-                      ~ which(tbl[[var_text]] >= .x & tbl[[var_text]] <= .y))),
-    class = "percentiled_df"
+                      ~ which(tbl[[var_text]] >= .x & tbl[[var_text]] <= .y)))
   )
 }
