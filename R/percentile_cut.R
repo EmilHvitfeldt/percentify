@@ -22,7 +22,7 @@
 #' @importFrom dplyr new_grouped_df
 #' @importFrom tidyr nest
 percentify_cut <- function(tbl, var, q = numeric()) {
-  percentify_custom(tbl, {{var}}, lower = c(0, q), upper = c(q, 1))
+  percentify(tbl, {{var}}, lower = c(0, q), upper = c(q, 1))
 }
 
 

@@ -17,5 +17,5 @@
 #'           n_obs = n()
 #'           )
 percentify_min <- function(tbl, var, q = numeric(), lower = 0) {
-  percentify_custom(tbl, {{var}}, lower = rep(lower, length(q)), upper = q)
+  percentify(tbl, {{var}}, lower = rep(lower, length(q)), upper = q)
 }
