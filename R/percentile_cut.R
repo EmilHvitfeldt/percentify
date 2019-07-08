@@ -33,11 +33,6 @@
 #'
 #' # cut_evenly() can be used to create cuts
 #' percentify_cut(mtcars, mpg, cut_evenly(8))
-#' @importFrom rlang := ensym
-#' @importFrom purrr map map2
-#' @importFrom stats quantile
-#' @importFrom dplyr new_grouped_df
-#' @importFrom tidyr nest
 percentify_cut <- function(data, var, q = numeric()) {
   percentify(data, {{var}}, lower = c(0, q), upper = c(q, 1))
 }

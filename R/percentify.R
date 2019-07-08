@@ -37,6 +37,10 @@
 #'
 #' percent_mtcars %>%
 #'   group_modify(~tidy(lm(disp ~ wt + cyl, data = .x)))
+#' @importFrom rlang := ensym
+#' @importFrom stats quantile
+#' @importFrom dplyr new_grouped_df
+#' @importFrom tidyr nest
 percentify <- function(data, var, lower = 0, upper = 1, key = ".percentile") {
   UseMethod("percentify")
 }
@@ -47,11 +51,20 @@ percentify.data.frame <- function(data, var, lower, upper,
   percentify(dplyr::as_tibble(data), {{var}}, lower, upper, key = key)
 }
 
+map2 <- function(.x, .y, .f, ...) {
+  out <- mapply(.f, .x, .y, MoreArgs = list(...), SIMPLIFY = FALSE)
+  if (length(out) == length(.x)) {
+    rlang::set_names(out, names(.x))
+  } else {
+    rlang::set_names(out, NULL)
+  }
+}
+
 #' @export
 percentify.tbl_df <- function(data, var, lower, upper, key = ".percentile") {
   var <- ensym(var)
 
-  p_format <- scales::percent_format()
+  p_format <- function(x) paste0(round(x * 100, digits = 1), "%")
   breaks_full <- paste(p_format(lower),
                        p_format(upper), sep = "-")
 
@@ -64,8 +77,17 @@ percentify.tbl_df <- function(data, var, lower, upper, key = ".percentile") {
     data,
     groups = tibble(
       !!name := breaks_full,
-      ".rows" := map2(cutoffs_lower, cutoffs_upper,
-                      ~ which(data[[var]] >= .x & data[[var]] <= .y))),
+      ".rows" := map2(
+        .x = cutoffs_lower,
+        .y = cutoffs_upper,
+        .f = function(.x, .y) {
+          which_index(.x, .y, data, var)
+        })
+      ),
     class = "percentiled_df"
   )
+}
+
+which_index <- function(x, y, data, var) {
+  which(data[[var]] >= x & data[[var]] <= y)
 }
