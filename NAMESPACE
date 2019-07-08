@@ -3,7 +3,7 @@
 S3method(percentify,data.frame)
 S3method(percentify,tbl_df)
 export(collect.percentiled_df)
-export(even_spaced)
+export(cut_evenly)
 export(percentify)
 export(percentify_cut)
 export(percentify_max)

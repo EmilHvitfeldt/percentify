@@ -26,11 +26,17 @@ Title
 }
 \examples{
 library(dplyr)
-cut_mtcars <- percentify(mtcars, mpg, c(0, 0.1, 0.5), c(1, 0.6, 0.7))
+library(broom)
+percent_mtcars <- percentify_max(mtcars, mpg, c(0, 0.25, 0.5, 0.75))
 
-summarize(cut_mtcars,
+percent_mtcars
+
+summarize(percent_mtcars,
           mean_hp = mean(hp),
           mean_wt = mean(wt),
           n_obs = n()
           )
+
+percent_mtcars \%>\%
+  group_modify(~tidy(lm(disp ~ wt + cyl, data = .x)))
 }

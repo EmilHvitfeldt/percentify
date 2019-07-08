@@ -21,11 +21,20 @@ Title
 }
 \examples{
 library(dplyr)
-cut_mtcars <- percentify_cut(mtcars, mpg, c(0.25, 0.75))
-summarize(cut_mtcars,
+library(broom)
+percent_mtcars <- percentify_cut(mtcars, mpg, c(0.25, 0.5, 0.75))
+
+percent_mtcars
+
+summarize(percent_mtcars,
           mean_hp = mean(hp),
           mean_wt = mean(wt),
           n_obs = n()
           )
 
+percent_mtcars \%>\%
+  group_modify(~tidy(lm(disp ~ wt + cyl, data = .x)))
+
+# cut_evenly() can be used to create cuts
+percentify_cut(mtcars, mpg, cut_evenly(8))
 }

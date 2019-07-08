@@ -1,4 +1,4 @@
-#' Evenly space n points between 0 and 1
+#' Evenly devide the range 0 to 1 into n pieces
 #'
 #' @param n number of points
 #'
@@ -6,12 +6,25 @@
 #' @export
 #'
 #' @examples
-#' even_spaced(3)
-#' even_spaced(4)
-#' even_spaced(9)
-even_spaced <- function(n) {
+#' cut_evenly(3)
+#' cut_evenly(4)
+#' cut_evenly(9)
+#'
+#' library(dplyr)
+#'
+#' # cut_evenly() is primarily used along with percentify_cut() to space the
+#' # cuts easily.
+#' percentify_cut(mtcars, mpg, cut_evenly(4)) %>%
+#'   summarise(mean(wt))
+cut_evenly <- function(n) {
   if (length(n) !=  1) {
     stop("`n` must be a single number.")
   }
-  seq(0, 1, length.out = n + 2)[-c(1, n + 2)]
+  if (as.integer(n) != n) {
+    stop("`n` must be an integer value.")
+  }
+  if (n < 2) {
+    stop("`n` must be 2 or more.")
+  }
+  seq(0, 1, length.out = n + 1)[-c(1, n + 1)]
 }

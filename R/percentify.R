@@ -13,13 +13,19 @@
 #'
 #' @examples
 #' library(dplyr)
-#' cut_mtcars <- percentify(mtcars, mpg, c(0, 0.1, 0.5), c(1, 0.6, 0.7))
+#' library(broom)
+#' percent_mtcars <- percentify_max(mtcars, mpg, c(0, 0.25, 0.5, 0.75))
 #'
-#' summarize(cut_mtcars,
+#' percent_mtcars
+#'
+#' summarize(percent_mtcars,
 #'           mean_hp = mean(hp),
 #'           mean_wt = mean(wt),
 #'           n_obs = n()
 #'           )
+#'
+#' percent_mtcars %>%
+#'   group_modify(~tidy(lm(disp ~ wt + cyl, data = .x)))
 percentify <- function(data, var, lower = 0, upper = 1, key = ".percentile") {
   UseMethod("percentify")
 }
@@ -32,23 +38,23 @@ percentify.data.frame <- function(data, var, lower, upper,
 
 #' @export
 percentify.tbl_df <- function(data, var, lower, upper, key = ".percentile") {
-  var_text <- ensym(var)
+  var <- ensym(var)
 
   p_format <- scales::percent_format()
   breaks_full <- paste(p_format(lower),
                        p_format(upper), sep = "-")
 
-  cutoffs_lower <- quantile(data[[var_text]], lower)
-  cutoffs_upper <- quantile(data[[var_text]], upper)
+  cutoffs_lower <- quantile(data[[var]], lower)
+  cutoffs_upper <- quantile(data[[var]], upper)
 
-  name <- paste(key, var_text, sep = "_")
+  name <- paste(key, var, sep = "_")
 
   new_grouped_df(
     data,
     groups = tibble(
       !!name := breaks_full,
       ".rows" := map2(cutoffs_lower, cutoffs_upper,
-                      ~ which(data[[var_text]] >= .x & data[[var_text]] <= .y))),
+                      ~ which(data[[var]] >= .x & data[[var]] <= .y))),
     class = "percentiled_df"
   )
 }
