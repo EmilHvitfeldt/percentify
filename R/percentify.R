@@ -35,8 +35,8 @@ percentify.tbl_df <- function(data, var, lower, upper, key = ".percentile") {
   var_text <- ensym(var)
 
   p_format <- scales::percent_format()
-  breaks_full <-paste(p_format(lower),
-                      p_format(upper), sep = "-")
+  breaks_full <- paste(p_format(lower),
+                       p_format(upper), sep = "-")
 
   cutoffs_lower <- quantile(data[[var_text]], lower)
   cutoffs_upper <- quantile(data[[var_text]], upper)

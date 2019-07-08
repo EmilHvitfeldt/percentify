@@ -10,5 +10,5 @@
 #' even_spaced(4)
 #' even_spaced(9)
 even_spaced <- function(n) {
-  seq(0, 1, length.out = n+2)[-c(1, n+2)]
+  seq(0, 1, length.out = n + 2)[-c(1, n + 2)]
 }

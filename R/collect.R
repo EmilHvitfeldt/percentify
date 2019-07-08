@@ -54,7 +54,7 @@ collect.percentiled_df <- function(x, ..., id = NULL, original_id = NULL) {
 # id = 1:n for each group
 maybe_use_id <- function(.out, id) {
 
-  if(!is.null(id)) {
+  if (!is.null(id)) {
 
     id_col <- map(.out[[".rows"]], seq_along)
 

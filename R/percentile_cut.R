@@ -24,5 +24,3 @@
 percentify_cut <- function(tbl, var, q = numeric()) {
   percentify(tbl, {{var}}, lower = c(0, q), upper = c(q, 1))
 }
-
-
