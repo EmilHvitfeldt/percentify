@@ -65,6 +65,16 @@ diamonds_price %>%
   geom_histogram(bins = 100)
 ```
 
+## PLotting function
+
+The resulting grouped data.frame have `ggplot2::autoplot()` methods to vizualize the the percentile ranges.
+
+```{r}
+percentify_random(diamonds, price, 0.2, 25) %>%
+  autoplot()
+```
+
+
 ## Inspiration
 
 The underlaying code for this package is inspired by the work done by [Davis Vaughan](https://twitter.com/dvaughan32) in [strapgod](https://github.com/DavisVaughan/strapgod).

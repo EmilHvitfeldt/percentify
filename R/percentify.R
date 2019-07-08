@@ -5,6 +5,8 @@
 #'  specified. This become handy once you start working with multiple
 #'  overlapping bounds.
 #'
+#'  There is a [ggplot2::autoplot()] to vizualise the the percentile ranges.
+#'
 #' @param data A data.frame or tibble,
 #' @param var Variable to do grouping by as string or symbol.
 #' @param lower Numerical values for lower bound of ranges. Must be between 0
@@ -37,6 +39,9 @@
 #'
 #' percent_mtcars %>%
 #'   group_modify(~tidy(lm(disp ~ wt + cyl, data = .x)))
+#'
+#' library(ggplot2)
+#' autoplot(percent_mtcars)
 #' @importFrom rlang := ensym
 #' @importFrom stats quantile
 #' @importFrom dplyr new_grouped_df
@@ -64,9 +69,8 @@ map2 <- function(.x, .y, .f, ...) {
 percentify.tbl_df <- function(data, var, lower, upper, key = ".percentile") {
   var <- ensym(var)
 
-  p_format <- function(x) paste0(round(x * 100, digits = 1), "%")
-  breaks_full <- paste(p_format(lower),
-                       p_format(upper), sep = "-")
+  breaks_full <- paste(p_format(lower, 100),
+                       p_format(upper, 100), sep = "-")
 
   cutoffs_lower <- quantile(data[[var]], lower)
   cutoffs_upper <- quantile(data[[var]], upper)

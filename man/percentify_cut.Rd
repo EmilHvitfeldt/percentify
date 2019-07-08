@@ -22,6 +22,9 @@ This function is a small wrapper around \code{\link{percentify}}. This
 function takes a vector of points and creates ranges between those points,
 resulting in non-overlapping groups.
 }
+\details{
+There is a \code{\link[ggplot2:autoplot]{ggplot2::autoplot()}} to vizualise the the percentile ranges.
+}
 \examples{
 library(dplyr)
 library(broom)
@@ -40,12 +43,16 @@ percent_mtcars \%>\%
 
 # cut_evenly() can be used to create cuts
 percentify_cut(mtcars, mpg, cut_evenly(8))
+
+library(ggplot2)
+autoplot(percent_mtcars)
 }
 \seealso{
 \link{cut_evenly}
 
-Other percentile samplers: \code{\link{percentify_max}},
+Other percentile samplers: \code{\link{autoplot.percentiled_df}},
+  \code{\link{percentify_max}},
   \code{\link{percentify_min}},
-  \code{\link{percentify_random}}, \code{\link{percentify}}
+  \code{\link{percentify_random}}
 }
 \concept{percentile samplers}

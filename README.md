@@ -9,6 +9,10 @@
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/percentify)](https://cran.r-project.org/package=percentify)
+[![Travis build
+status](https://travis-ci.org/EmilHvitfeldt/percentify.svg?branch=master)](https://travis-ci.org/EmilHvitfeldt/percentify)
+[![Codecov test
+coverage](https://codecov.io/gh/EmilHvitfeldt/percentify/branch/master/graph/badge.svg)](https://codecov.io/gh/EmilHvitfeldt/percentify?branch=master)
 <!-- badges: end -->
 
 The goal of percentify is to create virtual groups on top of a `tibble`
@@ -72,10 +76,10 @@ summarise(diamonds_price,
 #>   .percentile_price mean_carat procent_ideal mean_x n_obs
 #>   <chr>                  <dbl>         <dbl>  <dbl> <int>
 #> 1 0%-20%                 0.324         0.443   4.40 10796
-#> 2 20%-60%                0.566         0.461   5.26 21573
-#> 3 60%-80%                1.03          0.281   6.46 10783
+#> 2 20%-60%                0.566         0.462   5.26 21586
+#> 3 60%-80%                1.03          0.281   6.46 10793
 #> 4 80%-90%                1.27          0.362   6.91  5395
-#> 5 90%-95%                1.56          0.362   7.40  2696
+#> 5 90%-95%                1.56          0.362   7.40  2699
 #> 6 95%-100%               1.91          0.317   7.91  2697
 ```
 
@@ -90,6 +94,18 @@ diamonds_price %>%
 ```
 
 <img src="man/figures/README-unnamed-chunk-5-1.png" width="100%" />
+
+## PLotting function
+
+The resulting grouped data.frame have `ggplot2::autoplot()` methods to
+vizualize the the percentile ranges.
+
+``` r
+percentify_random(diamonds, price, 0.2, 25) %>%
+  autoplot()
+```
+
+<img src="man/figures/README-unnamed-chunk-6-1.png" width="100%" />
 
 ## Inspiration
 

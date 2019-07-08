@@ -4,6 +4,8 @@
 #' function takes a vector of points and creates ranges between those points,
 #' resulting in non-overlapping groups.
 #'
+#' There is a [ggplot2::autoplot()] to vizualise the the percentile ranges.
+#'
 #' @inheritParams percentify
 #' @param q Numerical values for cutting points. Must be between 0
 #'   and 1.
@@ -33,6 +35,9 @@
 #'
 #' # cut_evenly() can be used to create cuts
 #' percentify_cut(mtcars, mpg, cut_evenly(8))
+#'
+#' library(ggplot2)
+#' autoplot(percent_mtcars)
 percentify_cut <- function(data, var, q = numeric()) {
   percentify(data, {{var}}, lower = c(0, q), upper = c(q, 1))
 }

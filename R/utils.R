@@ -9,3 +9,5 @@ check_empty_dots <- function(...) {
 
   invisible()
 }
+
+p_format <- function(x, scale = 1) paste0(round(x * scale, digits = 1), "%")

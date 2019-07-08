@@ -24,6 +24,9 @@ percentile grouped tibble
 This function is a small wrapper around \code{\link{percentify}}, where the
 upper bound is a fixed value.
 }
+\details{
+There is a \code{\link[ggplot2:autoplot]{ggplot2::autoplot()}} to vizualise the the percentile ranges.
+}
 \examples{
 library(dplyr)
 library(broom)
@@ -39,10 +42,14 @@ summarize(percent_mtcars,
 
 percent_mtcars \%>\%
   group_modify(~tidy(lm(disp ~ wt + cyl, data = .x)))
+
+library(ggplot2)
+autoplot(percent_mtcars)
 }
 \seealso{
-Other percentile samplers: \code{\link{percentify_cut}},
+Other percentile samplers: \code{\link{autoplot.percentiled_df}},
+  \code{\link{percentify_cut}},
   \code{\link{percentify_max}},
-  \code{\link{percentify_random}}, \code{\link{percentify}}
+  \code{\link{percentify_random}}
 }
 \concept{percentile samplers}

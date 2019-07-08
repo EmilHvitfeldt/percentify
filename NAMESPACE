@@ -2,6 +2,7 @@
 
 S3method(percentify,data.frame)
 S3method(percentify,tbl_df)
+export(autoplot.percentiled_df)
 export(collect.percentiled_df)
 export(cut_evenly)
 export(percentify)
