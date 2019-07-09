@@ -36,8 +36,9 @@ devtools::install_github("EmilHvitfeldt/percentify")
 Imagine we want to do some summary statistics at the different percentile ranges of price in diamonds. We start by using `percentify_cut` to created a `percentiled_df` on price with splits at `20%`, `60%`, `80%`, `90%` and `95%`.
 
 ```{r message=FALSE}
+library(ggplot2)
+library(dplyr)
 library(percentify)
-library(tidyverse)
 ```
 
 ```{r}

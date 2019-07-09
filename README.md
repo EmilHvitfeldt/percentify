@@ -38,8 +38,9 @@ percentile ranges of price in diamonds. We start by using
 `20%`, `60%`, `80%`, `90%` and `95%`.
 
 ``` r
+library(ggplot2)
+library(dplyr)
 library(percentify)
-library(tidyverse)
 ```
 
 ``` r
@@ -63,7 +64,7 @@ diamonds_price
 #> # … with 53,930 more rows
 ```
 
-We can then use this grouped data.frame with `summarise` to canculate
+We can then use this grouped data.frame with `summarise` to calculate
 statistics within each range.
 
 ``` r
@@ -109,7 +110,7 @@ percentify_random(diamonds, price, 0.2, 25) %>%
 
 ## Inspiration
 
-The underlaying code for this package is inspired by the work done by
+The underlying code for this package is inspired by the work done by
 [Davis Vaughan](https://twitter.com/dvaughan32) in
 [strapgod](https://github.com/DavisVaughan/strapgod).
 
