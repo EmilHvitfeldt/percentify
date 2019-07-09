@@ -23,7 +23,7 @@ percentile grouped tibble
 This function is a wrapper around \code{\link{percentify}}. Given a \code{width`` and a }n`, it will generate a number of random interval with fixed width.
 }
 \details{
-There is a \code{\link[ggplot2:autoplot]{ggplot2::autoplot()}} to vizualise the the percentile ranges.
+There is a \code{\link[ggplot2:autoplot]{ggplot2::autoplot()}} to visualize the the percentile ranges.
 }
 \examples{
 library(dplyr)

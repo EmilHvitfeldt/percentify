@@ -25,7 +25,7 @@ This function is a small wrapper around \code{\link{percentify}}, where the
 upper bound is a fixed value.
 }
 \details{
-There is a \code{\link[ggplot2:autoplot]{ggplot2::autoplot()}} to vizualise the the percentile ranges.
+There is a \code{\link[ggplot2:autoplot]{ggplot2::autoplot()}} to visualize the the percentile ranges.
 }
 \examples{
 library(dplyr)

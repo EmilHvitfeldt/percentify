@@ -2,7 +2,7 @@
 % Please edit documentation in R/helpers.R
 \name{cut_evenly}
 \alias{cut_evenly}
-\title{Evenly devide the range 0 to 1 into n pieces}
+\title{Evenly  divide the range 0 to 1 into n pieces}
 \usage{
 cut_evenly(n)
 }

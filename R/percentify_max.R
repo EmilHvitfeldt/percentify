@@ -3,7 +3,7 @@
 #' This function is a small wrapper around \code{\link{percentify}}, where the
 #' upper bound is a fixed value.
 #'
-#' There is a [ggplot2::autoplot()] to vizualise the the percentile ranges.
+#' There is a [ggplot2::autoplot()] to visualize the the percentile ranges.
 #'
 #' @inheritParams percentify
 #' @param q Numerical values for lower bound of ranges. Must be between 0

@@ -1,4 +1,4 @@
-#' Evenly devide the range 0 to 1 into n pieces
+#' Evenly  divide the range 0 to 1 into n pieces
 #'
 #' This function work very well in combination with \code{\link{percentify_cut}}
 #' to create evenly spaced intervals.

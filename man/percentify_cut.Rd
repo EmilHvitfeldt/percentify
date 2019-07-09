@@ -23,7 +23,7 @@ function takes a vector of points and creates ranges between those points,
 resulting in non-overlapping groups.
 }
 \details{
-There is a \code{\link[ggplot2:autoplot]{ggplot2::autoplot()}} to vizualise the the percentile ranges.
+There is a \code{\link[ggplot2:autoplot]{ggplot2::autoplot()}} to visualize the the percentile ranges.
 }
 \examples{
 library(dplyr)

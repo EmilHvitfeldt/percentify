@@ -36,7 +36,7 @@ specified. This become handy once you start working with multiple
 overlapping bounds.
 }
 \details{
-There is a \code{\link[ggplot2:autoplot]{ggplot2::autoplot()}} to vizualise the the percentile ranges.
+There is a \code{\link[ggplot2:autoplot]{ggplot2::autoplot()}} to visualize the the percentile ranges.
 }
 \examples{
 library(dplyr)

@@ -4,7 +4,7 @@
 #' function takes a vector of points and creates ranges between those points,
 #' resulting in non-overlapping groups.
 #'
-#' There is a [ggplot2::autoplot()] to vizualise the the percentile ranges.
+#' There is a [ggplot2::autoplot()] to visualize the the percentile ranges.
 #'
 #' @inheritParams percentify
 #' @param q Numerical values for cutting points. Must be between 0

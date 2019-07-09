@@ -3,7 +3,7 @@
 #' This function is a wrapper around \code{\link{percentify}}. Given a `width``
 #' and a `n`, it will generate a number of random interval with fixed width.
 #'
-#' There is a [ggplot2::autoplot()] to vizualise the the percentile ranges.
+#' There is a [ggplot2::autoplot()] to visualize the the percentile ranges.
 #'
 #' @inheritParams percentify
 #' @param width Numerical values for the width of the interval. Must be between

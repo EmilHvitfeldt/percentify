@@ -5,7 +5,7 @@
 #'  specified. This become handy once you start working with multiple
 #'  overlapping bounds.
 #'
-#'  There is a [ggplot2::autoplot()] to vizualise the the percentile ranges.
+#'  There is a [ggplot2::autoplot()] to visualize the the percentile ranges.
 #'
 #' @param data A data.frame or tibble,
 #' @param var Variable to do grouping by as string or symbol.
